@@ -3,24 +3,18 @@ package pokemons.attacks;
 import ru.ifmo.se.pokemon.Effect;
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Stat;
-import ru.ifmo.se.pokemon.StatusMove;
+import ru.ifmo.se.pokemon.PhysicalMove;
 import ru.ifmo.se.pokemon.Type;
 
-public class Swagger extends StatusMove {
-    public Swagger() {
-        super(Type.NORMAL, 0, 85);
-    }
-
-    @Override
-    protected void applyOppEffects(Pokemon p) {
-        super.applyOppEffects(p);
-        Effect.confuse(p);
+public class Superpower extends PhysicalMove {
+    public Superpower() {
+        super(Type.FIGHTING, 120, 100);
     }
 
     @Override
     protected void applySelfEffects(Pokemon p) {
         super.applySelfEffects(p);
-        Effect e = new Effect().stat(Stat.ATTACK, 2);
+        Effect e = new Effect().stat(Stat.ATTACK, -1).stat(Stat.DEFENSE, -1);
         p.addEffect(e);
     }
 
