@@ -1,0 +1,11 @@
+#!/usr/bin/env fish
+javac -d bin -cp lib/Pokemon.jar src/pokemons/*.java src/pokemons/attacks/*.java src/pokemons/types/*.java
+jar -cfe Lab2.jar pokemons.Main -C bin .
+jar -uf Lab2.jar -C . lib/Pokemon.jar
+mkdir tmp
+cd tmp
+jar xf ../lib/Pokemon.jar
+rm -rf META-INF
+cd ..
+jar uf Lab2.jar -C tmp .
+rm -rf tmp

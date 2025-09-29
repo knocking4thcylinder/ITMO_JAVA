@@ -1,0 +1,4 @@
+#!/usr/bin/env fish
+./build
+scp -i /home/k4c/.ssh/id_ed25519 -P 2222 ./Lab2.jar s502812@helios.se.ifmo.ru:~/
+ssh -i /home/k4c/.ssh/id_ed25519 -p 2222 s502812@helios.se.ifmo.ru "java -Xmx512m -jar Lab2.jar"
