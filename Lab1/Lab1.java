@@ -1,25 +1,23 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class Lab1 {
     public static void main(String[] args) {
-        ArrayList<Short> w = new ArrayList<Short>();
+        Short[] w = new Short[9];
         Double[] x = new Double[19];
         float[][] w1 = new float[9][19];
-
+        
+        int ind = 0;
         for (short i = 21; i >= 5; i -= 2) {
-            w.add(i);
+            w[ind] = i;
+            ind++;
         }
 
         for (int i = 0; i < x.length; i++) {
             x[i] = Math.random() * 22 - 14;
         }
-        // System.out.println(Arrays.toString(w.toArray()));
-        // System.out.println(Arrays.toString(x));
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 19; j++) {
-                w1[i][j] = CalculateElementW(w.get(i), x[j]);
-                // System.out.printf("%s, %s: %f\n", i, j, w1[i][j]);
+                w1[i][j] = CalculateElementW(w[i], x[j]);
             }
         }
         PrintMatrix(w1);
@@ -38,9 +36,9 @@ public class Lab1 {
         for (float[] floats : mtx) {
             String[] tmp = new String[floats.length];
             for (int i = 0; i < floats.length; i++) {
-                tmp[i] = String.format("%.3f", floats[i]);
+                tmp[i] = String.format("%9.3f", floats[i]);
             }
-            System.out.println(String.join(" ", tmp));
+            System.out.println(String.join(" |", tmp));
         }
     }
 }
