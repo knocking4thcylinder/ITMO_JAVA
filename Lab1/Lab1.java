@@ -1,3 +1,4 @@
+import java.lang.annotation.Native;
 import java.util.List;
 
 public class Lab1 {
