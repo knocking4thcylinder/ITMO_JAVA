@@ -2,26 +2,20 @@ package pokemons.attacks;
 
 import ru.ifmo.se.pokemon.Effect;
 import ru.ifmo.se.pokemon.Pokemon;
-import ru.ifmo.se.pokemon.Stat;
-import ru.ifmo.se.pokemon.StatusMove;
+import ru.ifmo.se.pokemon.SpecialMove;
 import ru.ifmo.se.pokemon.Type;
 
-public class Swagger extends StatusMove {
-    public Swagger() {
-        super(Type.NORMAL, 0, 85);
+public final class Blizzard extends SpecialMove {
+    public Blizzard() {
+        super(Type.ICE, 110, 70);
     }
 
     @Override
     protected void applyOppEffects(Pokemon p) {
         super.applyOppEffects(p);
-        Effect.confuse(p);
-    }
-
-    @Override
-    protected void applySelfEffects(Pokemon p) {
-        super.applySelfEffects(p);
-        Effect e = new Effect().stat(Stat.ATTACK, 2);
-        p.addEffect(e);
+        if (Math.random() * 10 < 1) {
+            Effect.freeze(p);
+        }
     }
 
     @Override

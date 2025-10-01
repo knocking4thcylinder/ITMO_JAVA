@@ -1,17 +1,11 @@
 package pokemons.attacks;
 
 import ru.ifmo.se.pokemon.PhysicalMove;
-import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
 
-public final class StormThrow extends PhysicalMove {
-    public StormThrow() {
-        super(Type.FIGHTING, 60, 100);
-    }
-
-    @Override
-    protected double calcCriticalHit(Pokemon att, Pokemon def) {
-        return 1.5;
+public final class WingAttack extends PhysicalMove {
+    public WingAttack() {
+        super(Type.FLYING, 60, 100);
     }
 
     @Override

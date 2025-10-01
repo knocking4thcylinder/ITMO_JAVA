@@ -1,11 +1,11 @@
 package pokemons.attacks;
 
-import ru.ifmo.se.pokemon.Type;
 import ru.ifmo.se.pokemon.PhysicalMove;
+import ru.ifmo.se.pokemon.Type;
 
-public final class MegaKick extends PhysicalMove {
-    public MegaKick() {
-        super(Type.NORMAL, 120, 75);
+public final class DragonClaw extends PhysicalMove {
+    public DragonClaw() {
+        super(Type.DRAGON, 80, 100);
     }
 
     @Override
