@@ -2,8 +2,8 @@ import java.util.List;
 
 public class Lab1 {
     public static void main(String[] args) {
-        Short[] w = new Short[9];
-        Double[] x = new Double[19];
+        short[] w = new short[9];
+        double[] x = new double[19];
         float[][] w1 = new float[9][19];
         
         int ind = 0;
