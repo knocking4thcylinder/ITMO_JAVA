@@ -1,9 +1,6 @@
 package pokemons;
 
-import pokemons.types.Aerodactyl;
-import pokemons.types.Barboach;
-import pokemons.types.Porygon2;
-import pokemons.types.PorygonZ;
+import pokemons.types.*;
 import ru.ifmo.se.pokemon.Battle;
 import ru.ifmo.se.pokemon.Pokemon;
 
@@ -14,10 +11,14 @@ public class Main {
         Pokemon p2 = new Barboach("Хищник1");
         Pokemon p3 = new PorygonZ("cool-ass name2");
         Pokemon p4 = new Aerodactyl("Хищник2");
+        Pokemon p5 = new Whiscash("Whiscash");
+        Pokemon p6 = new Porygon("Porygon");
         b.addAlly(p1);
         b.addFoe(p2);
         b.addAlly(p4);
         b.addFoe(p3);
+        b.addAlly(p5);
+        b.addFoe(p6);
         b.go();
     }
 }

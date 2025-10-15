@@ -1,4 +1,6 @@
 #!/usr/bin/env fish
 ./build
-scp -i /home/k4c/.ssh/id_ed25519 -P 2222 ./Lab2.jar s502812@helios.se.ifmo.ru:~/
-ssh -i /home/k4c/.ssh/id_ed25519 -p 2222 s502812@helios.se.ifmo.ru "java -Xmx512m -jar Lab2.jar"
+ssh -i /home/k4c/.ssh/id_ed25519 -p 2222 s502812@helios.se.ifmo.ru "mkdir -p Lab2/lib"
+scp -i /home/k4c/.ssh/id_ed25519 -P 2222 ./Lab2.jar s502812@helios.se.ifmo.ru:~/Lab2/Lab2.jar
+scp -i /home/k4c/.ssh/id_ed25519 -P 2222 ./lib/Pokemon.jar s502812@helios.se.ifmo.ru:~/Lab2/lib/Pokemon.jar
+ssh -i /home/k4c/.ssh/id_ed25519 -p 2222 s502812@helios.se.ifmo.ru "java -Xmx512m -jar Lab2/Lab2.jar"

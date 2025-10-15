@@ -10,6 +10,7 @@ import ru.ifmo.se.pokemon.Type;
 public final class Whiscash extends Pokemon {
     public Whiscash(String name) {
         super(name, 143);
+
         super.setType(Type.WATER, Type.GROUND);
         super.setStats(110, 78, 73, 76, 71, 60);
 
