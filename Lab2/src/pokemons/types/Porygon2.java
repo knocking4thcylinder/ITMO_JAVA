@@ -4,19 +4,16 @@ import pokemons.attacks.DefenseCurl;
 import pokemons.attacks.IceBeam;
 import pokemons.attacks.ShadowBall;
 
-import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
 
-public final class Porygon2 extends Pokemon {
+public sealed class Porygon2 extends Porygon permits PorygonZ {
     public Porygon2(String name) {
-        super(name, 135);
+        super(name);
         super.setType(Type.NORMAL);
         super.setStats(85, 80, 90, 105, 95, 60);
 
-        IceBeam iceBeam = new IceBeam();
-        ShadowBall shadowBall = new ShadowBall();
         DefenseCurl defenseCurl = new DefenseCurl();
 
-        super.setMove(iceBeam, shadowBall, defenseCurl);
+        super.addMove(defenseCurl);
     }
 }

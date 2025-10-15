@@ -6,7 +6,7 @@ import pokemons.attacks.ShadowBall;
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
 
-public final class Porygon extends Pokemon {
+public sealed class Porygon extends Pokemon permits Porygon2 {
     public Porygon(String name) {
         super(name, 135);
         super.setType(Type.NORMAL);
