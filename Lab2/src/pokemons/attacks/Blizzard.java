@@ -3,6 +3,7 @@ package pokemons.attacks;
 import ru.ifmo.se.pokemon.Effect;
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.SpecialMove;
+import ru.ifmo.se.pokemon.Status;
 import ru.ifmo.se.pokemon.Type;
 
 public final class Blizzard extends SpecialMove {
@@ -13,9 +14,8 @@ public final class Blizzard extends SpecialMove {
     @Override
     protected void applyOppEffects(Pokemon p) {
         super.applyOppEffects(p);
-        if (Math.random() * 10 < 1) {
-            Effect.freeze(p);
-        }
+        Effect effect = new Effect().chance(0.1).condition(Status.FREEZE);
+        p.addEffect(effect);
     }
 
     @Override
