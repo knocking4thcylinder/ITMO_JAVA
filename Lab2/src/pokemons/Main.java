@@ -1,6 +1,7 @@
 package pokemons;
 
 import pokemons.types.*;
+
 import ru.ifmo.se.pokemon.Battle;
 import ru.ifmo.se.pokemon.Pokemon;
 
