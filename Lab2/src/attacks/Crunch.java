@@ -1,20 +1,20 @@
-package pokemons.attacks;
+package attacks;
 
 import ru.ifmo.se.pokemon.Effect;
+import ru.ifmo.se.pokemon.PhysicalMove;
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Stat;
-import ru.ifmo.se.pokemon.StatusMove;
 import ru.ifmo.se.pokemon.Type;
 
-public final class DefenseCurl extends StatusMove {
-    public DefenseCurl() {
-        super(Type.NORMAL, 0, 0);
+public final class Crunch extends PhysicalMove {
+    public Crunch() {
+        super(Type.DARK, 80, 100);
     }
 
     @Override
-    protected void applySelfEffects(Pokemon p) {
-        super.applySelfEffects(p);
-        Effect e = new Effect().stat(Stat.DEFENSE, 1);
+    protected void applyOppEffects(Pokemon p) {
+        super.applyOppEffects(p);
+        Effect e = new Effect().chance(0.2).stat(Stat.DEFENSE, -1);
         p.addEffect(e);
     }
 

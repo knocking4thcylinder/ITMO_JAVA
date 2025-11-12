@@ -1,21 +1,21 @@
-package pokemons.attacks;
+package attacks;
 
 import ru.ifmo.se.pokemon.Effect;
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.SpecialMove;
-import ru.ifmo.se.pokemon.Status;
+import ru.ifmo.se.pokemon.Stat;
 import ru.ifmo.se.pokemon.Type;
 
-public final class Discharge extends SpecialMove {
-    public Discharge() {
-        super(Type.ELECTRIC, 80, 100);
+public final class ShadowBall extends SpecialMove {
+    public ShadowBall() {
+        super(Type.GHOST, 80, 100);
     }
 
     @Override
     protected void applyOppEffects(Pokemon p) {
         super.applyOppEffects(p);
-        Effect effect = new Effect().chance(0.3).condition(Status.PARALYZE);
-        p.addEffect(effect);
+        Effect e = new Effect().chance(0.2).stat(Stat.SPECIAL_DEFENSE, -1);
+        p.addEffect(e);
     }
 
     @Override

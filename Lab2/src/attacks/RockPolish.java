@@ -1,20 +1,20 @@
-package pokemons.attacks;
+package attacks;
 
 import ru.ifmo.se.pokemon.Effect;
 import ru.ifmo.se.pokemon.Pokemon;
-import ru.ifmo.se.pokemon.SpecialMove;
 import ru.ifmo.se.pokemon.Stat;
+import ru.ifmo.se.pokemon.StatusMove;
 import ru.ifmo.se.pokemon.Type;
 
-public final class ShadowBall extends SpecialMove {
-    public ShadowBall() {
-        super(Type.GHOST, 80, 100);
+public final class RockPolish extends StatusMove {
+    public RockPolish() {
+        super(Type.ROCK, 0, 100);
     }
 
     @Override
-    protected void applyOppEffects(Pokemon p) {
-        super.applyOppEffects(p);
-        Effect e = new Effect().chance(0.2).stat(Stat.SPECIAL_DEFENSE, -1);
+    protected void applySelfEffects(Pokemon p) {
+        super.applySelfEffects(p);
+        Effect e = new Effect().chance(1).stat(Stat.SPEED, 2);
         p.addEffect(e);
     }
 

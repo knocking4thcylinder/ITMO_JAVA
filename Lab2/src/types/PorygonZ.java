@@ -1,6 +1,6 @@
-package pokemons.types;
+package types;
 
-import pokemons.attacks.Discharge;
+import attacks.Discharge;
 
 import ru.ifmo.se.pokemon.Type;
 

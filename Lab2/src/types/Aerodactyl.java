@@ -1,9 +1,9 @@
-package pokemons.types;
+package types;
 
-import pokemons.attacks.Crunch;
-import pokemons.attacks.DragonClaw;
-import pokemons.attacks.RockPolish;
-import pokemons.attacks.WingAttack;
+import attacks.Crunch;
+import attacks.DragonClaw;
+import attacks.RockPolish;
+import attacks.WingAttack;
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
 

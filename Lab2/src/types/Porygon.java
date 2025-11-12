@@ -1,7 +1,7 @@
-package pokemons.types;
+package types;
 
-import pokemons.attacks.IceBeam;
-import pokemons.attacks.ShadowBall;
+import attacks.IceBeam;
+import attacks.ShadowBall;
 
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;

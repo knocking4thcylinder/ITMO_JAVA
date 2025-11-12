@@ -1,8 +1,6 @@
-package pokemons.types;
+package types;
 
-import pokemons.attacks.DefenseCurl;
-import pokemons.attacks.IceBeam;
-import pokemons.attacks.ShadowBall;
+import attacks.DefenseCurl;
 
 import ru.ifmo.se.pokemon.Type;
 

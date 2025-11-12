@@ -1,4 +1,4 @@
-package pokemons.attacks;
+package attacks;
 
 import ru.ifmo.se.pokemon.Effect;
 import ru.ifmo.se.pokemon.Pokemon;

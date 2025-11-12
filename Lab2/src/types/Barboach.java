@@ -1,8 +1,8 @@
-package pokemons.types;
+package types;
 
-import pokemons.attacks.Amnesia;
-import pokemons.attacks.Blizzard;
-import pokemons.attacks.Scald;
+import attacks.Amnesia;
+import attacks.Blizzard;
+import attacks.Scald;
 
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;

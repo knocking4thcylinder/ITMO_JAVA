@@ -1,21 +1,21 @@
-package pokemons.attacks;
+package attacks;
 
 import ru.ifmo.se.pokemon.Effect;
 import ru.ifmo.se.pokemon.Pokemon;
-import ru.ifmo.se.pokemon.SpecialMove;
-import ru.ifmo.se.pokemon.Status;
+import ru.ifmo.se.pokemon.Stat;
+import ru.ifmo.se.pokemon.StatusMove;
 import ru.ifmo.se.pokemon.Type;
 
-public final class Scald extends SpecialMove {
-    public Scald() {
-        super(Type.WATER, 80, 100);
+public final class Tickle extends StatusMove {
+    public Tickle() {
+        super(Type.NORMAL, 0, 100);
     }
 
     @Override
     protected void applyOppEffects(Pokemon p) {
         super.applyOppEffects(p);
-        Effect effect = new Effect().chance(0.3).condition(Status.BURN);
-        p.addEffect(effect);
+        Effect e = new Effect().chance(1).stat(Stat.ATTACK, -1).stat(Stat.DEFENSE, -1);
+        p.addEffect(e);
     }
 
     @Override

@@ -1,6 +1,6 @@
-package pokemons.types;
+package types;
 
-import pokemons.attacks.Tickle;
+import attacks.Tickle;
 
 import ru.ifmo.se.pokemon.Type;
 
