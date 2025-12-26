@@ -1,0 +1,477 @@
+classDiagram
+    class Entity {
+        <<abstract>>
+        -String name
+        -Location location
+        +Entity(String name, Location location)
+        +getName() String
+        +getLocation() Location
+        +setLocation(Location location)
+    }
+
+    class Movable {
+        <<interface>>
+        +move(Location destination) void
+        +canMove() boolean
+    }
+
+    class Wearable {
+        <<interface>>
+        +wear(Korotyshka wearer) void
+        +takeOff(Korotyshka wearer) void
+        +isFashionable() boolean
+    }
+
+    class Actionable {
+        <<interface>>
+        +performAction(Action action) void
+        +canPerformAction(Action action) boolean
+    }
+
+    class Readable {
+        <<interface>>
+        +read() String
+        +getContent() String
+    }
+    class ClothingStyle {
+        <<enumeration>>
+        MODERN
+        CLASSIC
+        CASUAL
+        OLD_FASHIONED
+        +getDescription() String
+    }
+
+    class EmotionalState {
+        <<enumeration>>
+        CALM
+        ANGRY
+        FRUSTRATED
+        GUILTY
+        TROUBLED
+        SLEEPING
+        +canPerformAction() boolean
+    }
+
+    class ConflictSeverity {
+        <<enumeration>>
+        MINOR
+        MODERATE
+        SEVERE
+        CRITICAL
+        +getArrestDays() int
+    }
+
+    class TrafficState {
+        <<enumeration>>
+        MOVING
+        STOPPED
+        CONGESTED
+        +canPass() boolean
+    }
+    class Location {
+        <<record>>
+        +String street
+        +int position
+        +Location(String street, int position)
+    }
+
+    class InjuryDetails {
+        <<record>>
+        +InjuryType type
+        +int severity
+        +String description
+        +InjuryDetails(InjuryType type, int severity, String description)
+    }
+
+    class LawRecord {
+        <<record>>
+        +String offense
+        +int daysOfArrest
+        +String description
+        +LawRecord(String offense, int daysOfArrest, String description)
+    }
+
+    class ArrestInfo {
+        <<record>>
+        +Korotyshka arrested
+        +int totalDays
+        +ArrayList~InjuryDetails~ offenses
+        +ArrestInfo(Korotyshka arrested, int totalDays, ArrayList offenses)
+    }
+    class Korotyshka {
+        -ClothingStyle style
+        -EmotionalState state
+        -ArrayList~Clothing~ outfit
+        -ArrayList~InjuryDetails~ injuries
+        -boolean inCustody
+        +Korotyshka(String name, Location location)
+        +getStyle() ClothingStyle
+        +setState(EmotionalState state)
+        +getState() EmotionalState
+        +wearClothing(Clothing clothing)
+        +getOutfit() ArrayList~Clothing~
+        +addInjury(InjuryDetails injury)
+        +getInjuries() ArrayList~InjuryDetails~
+        +isInCustody() boolean
+        +setInCustody(boolean inCustody)
+        +stepOn(Korotyshka other) void
+        +insult(Korotyshka other) void
+        +toString() String
+        +equals(Object o) boolean
+        +hashCode() int
+    }
+
+    class Citizen {
+        -boolean aggressive
+        -int temperLevel
+        +Citizen(String name, Location location, boolean aggressive)
+        +isAggressive() boolean
+        +getTemperLevel() int
+        +increaseTemper() void
+        +hit(Korotyshka other, String bodyPart) void
+        +giveBruise(Korotyshka other, String location) void
+        +bite(Policeman policeman) void
+        +tryToEscape() boolean
+    }
+
+    class Policeman {
+        -String badge
+        -boolean onDuty
+        -ArrayList~Korotyshka~ detained
+        -Conscience conscience
+        +Policeman(String name, Location location, String badge)
+        +getBadge() String
+        +isOnDuty() boolean
+        +setOnDuty(boolean onDuty)
+        +getConscience() Conscience
+        +askToDisperse(Crowd crowd) void
+        +grab(Korotyshka troublemaker) void
+        +drag(Korotyshka person, Location destination) void
+        +arrest(Korotyshka person, int days) ArrestInfo
+        +release(Korotyshka person) void
+        +getBitten() void
+        +getAngry() void
+        +goHome() void
+        +sleep() void
+    }
+
+    class Spectator {
+        -int curiosityLevel
+        -boolean willingToMove
+        +Spectator(String name, Location location)
+        +getCuriosityLevel() int
+        +isWillingToMove() boolean
+        +watchConflict(Conflict conflict) void
+        +refuseToDisperse() void
+    }
+    class Clothing {
+        -String type
+        -String color
+        -ClothingStyle style
+        -boolean narrow
+        -boolean wide
+        +Clothing(String type, String color, ClothingStyle style)
+        +getType() String
+        +getColor() String
+        +getStyle() ClothingStyle
+        +isNarrow() boolean
+        +isWide() boolean
+        +toString() String
+        +equals(Object o) boolean
+        +hashCode() int
+    }
+
+    class Pants {
+        -boolean wide
+        +Pants(String color, ClothingStyle style, boolean wide)
+        +isWide() boolean
+    }
+
+    class Jacket {
+        -boolean narrowSleeves
+        +Jacket(String color, ClothingStyle style, boolean narrowSleeves)
+        +hasNarrowSleeves() boolean
+    }
+
+    class Book {
+        -String title
+        -BookType type
+        -ArrayList~LawRecord~ laws
+        -int ageYears
+        +Book(String title, BookType type)
+        +getTitle() String
+        +getType() BookType
+        +addLaw(LawRecord law)
+        +getLaws() ArrayList~LawRecord~
+        +findLaw(String offense) LawRecord
+        +getAgeYears() int
+        +toString() String
+        +equals(Object o) boolean
+        +hashCode() int
+    }
+
+    class AncientLawBook {
+        -boolean storedInCabinet
+        +AncientLawBook(String title)
+        +isStoredInCabinet() boolean
+        +retrieveFromCabinet(Cabinet cabinet) void
+        +calculateArrestDays(ArrayList~InjuryDetails~ offenses) int
+    }
+
+    class Cabinet {
+        -ArrayList~StorableItem~ items
+        -boolean locked
+        +Cabinet()
+        +addItem(StorableItem item)
+        +removeItem(StorableItem item) StorableItem
+        +isLocked() boolean
+        +lock() void
+        +unlock() void
+        +contains(StorableItem item) boolean
+    }
+
+    class Room {
+        -String roomName
+        -String nickname
+        -boolean locked
+        -ArrayList~Korotyshka~ occupants
+        -int temperature
+        +Room(String roomName, String nickname)
+        +getRoomName() String
+        +getNickname() String
+        +isLocked() boolean
+        +lock() void
+        +unlock() void
+        +addOccupant(Korotyshka person)
+        +removeOccupant(Korotyshka person)
+        +getOccupants() ArrayList~Korotyshka~
+        +getTemperature() int
+        +toString() String
+        +equals(Object o) boolean
+        +hashCode() int
+    }
+
+    class Kholodilnik {
+        -String originStory
+        -boolean originKnown
+        +Kholodilnik()
+        +getOriginStory() String
+        +isOriginKnown() boolean
+        +confine(Korotyshka person) void
+        +hasNormalTemperature() boolean
+    }
+
+    class Cafeteria {
+        -ArrayList~Meal~ availableMeals
+        +Cafeteria(String name)
+        +addMeal(Meal meal)
+        +serveMeal(String mealType) Meal
+        +getAvailableMeals() ArrayList~Meal~
+    }
+
+    class Meal {
+        -String type
+        -boolean hot
+        +Meal(String type, boolean hot)
+        +getType() String
+        +isHot() boolean
+        +serve(Korotyshka person) void
+    }
+    class Conflict {
+        -Korotyshka participant1
+        -Korotyshka participant2
+        -ConflictSeverity severity
+        -ArrayList~String~ insults
+        -ArrayList~InjuryDetails~ injuries
+        -boolean resolved
+        +Conflict(Korotyshka p1, Korotyshka p2)
+        +getSeverity() ConflictSeverity
+        +escalate() void
+        +addInsult(String insult)
+        +addInjury(InjuryDetails injury)
+        +isResolved() boolean
+        +resolve() void
+        +getParticipants() ArrayList~Korotyshka~
+    }
+
+    class Crowd {
+        -ArrayList~Spectator~ spectators
+        -Location location
+        -boolean blocking
+        +Crowd(Location location)
+        +addSpectator(Spectator spectator)
+        +getSize() int
+        +isBlocking() boolean
+        +disperse() boolean
+        +formInstantly() void
+    }
+
+    class Street {
+        -String name
+        -TrafficState trafficState
+        -ArrayList~Korotyshka~ pedestrians
+        +Street(String name)
+        +getName() String
+        +getTrafficState() TrafficState
+        +setTrafficState(TrafficState state)
+        +addPedestrian(Korotyshka person)
+        +removePedestrian(Korotyshka person)
+        +stopTraffic() void
+        +resumeTraffic() void
+    }
+
+    class PoliceStation {
+        -String address
+        -ArrayList~Policeman~ officers
+        -Kholodilnik kholodilnik
+        -Cabinet cabinet
+        -Cafeteria cafeteria
+        +PoliceStation(String address)
+        +getKholodilnik() Kholodilnik
+        +getCabinet() Cabinet
+        +getCafeteria() Cafeteria
+        +addOfficer(Policeman officer)
+        +processArrest(ArrestInfo info) void
+    }
+
+    class Conscience {
+        -int guiltLevel
+        -boolean active
+        -ArrayList~String~ accusations
+        +Conscience()
+        +getGuiltLevel() int
+        +isActive() boolean
+        +activate() void
+        +deactivate() void
+        +torment(Policeman policeman) void
+        +addAccusation(String accusation)
+        +argue(String argument) void
+        +causeInsomnia() void
+    }
+
+    class InjuryType {
+        <<enumeration>>
+        HIT_ON_BACK_OF_HEAD
+        BRUISE_UNDER_EYE
+        BITE_ON_HAND
+        STEPPED_ON_FOOT
+        +getArrestDays() int
+    }
+
+    class BookType {
+        <<enumeration>>
+        ANCIENT_LAWS
+        MODERN_LAWS
+        REGULATIONS
+        HISTORY
+        +isLegal() boolean
+    }
+    class StorableItem {
+        <<interface>>
+        +canBeStored() boolean
+        +getStorageSpace() int
+    }
+    class IllegalArrestException {
+        <<checked exception>>
+        -ArrestInfo arrestInfo
+        -String reason
+        +IllegalArrestException(String message, ArrestInfo info)
+        +getArrestInfo() ArrestInfo
+        +getReason() String
+        +getMessage() String
+    }
+
+    class ConflictEscalationException {
+        <<checked exception>>
+        -ConflictSeverity severity
+        -Conflict conflict
+        +ConflictEscalationException(String message, Conflict conflict)
+        +getSeverity() ConflictSeverity
+        +getConflict() Conflict
+        +getMessage() String
+    }
+
+    class RoomLockedException {
+        <<unchecked exception>>
+        -Room room
+        +RoomLockedException(String message, Room room)
+        +getRoom() Room
+        +getMessage() String
+    }
+
+    class ConscienceTormentException {
+        <<unchecked exception>>
+        -Conscience conscience
+        -int tormentLevel
+        +ConscienceTormentException(String message, Conscience conscience, int level)
+        +getConscience() Conscience
+        +getTormentLevel() int
+        +getMessage() String
+    }
+    Entity <|-- Korotyshka
+    Korotyshka <|-- Citizen
+    Korotyshka <|-- Policeman
+    Korotyshka <|-- Spectator
+    
+    Entity <|-- Clothing
+    Clothing <|-- Pants
+    Clothing <|-- Jacket
+    
+    Entity <|-- Book
+    Book <|-- AncientLawBook
+    
+    Entity <|-- Room
+    Room <|-- Kholodilnik
+    Room <|-- Cafeteria
+    Movable <|.. Korotyshka
+    Actionable <|.. Korotyshka
+    Actionable <|.. Policeman
+    Actionable <|.. Citizen
+    
+    Wearable <|.. Clothing
+    Readable <|.. Book
+    StorableItem <|.. Book
+    StorableItem <|.. Meal
+    Korotyshka *-- ClothingStyle
+    Korotyshka *-- EmotionalState
+    Korotyshka o-- Clothing
+    Korotyshka *-- InjuryDetails
+    
+    Citizen *-- Conflict
+    Policeman *-- Conscience
+    Policeman o-- Korotyshka
+    
+    Conflict *-- ConflictSeverity
+    Conflict *-- InjuryDetails
+    Conflict o-- Korotyshka
+    
+    Crowd o-- Spectator
+    Crowd *-- Location
+    
+    Street *-- TrafficState
+    Street o-- Korotyshka
+    
+    Room o-- Korotyshka
+    
+    PoliceStation *-- Kholodilnik
+    PoliceStation *-- Cabinet
+    PoliceStation *-- Cafeteria
+    PoliceStation o-- Policeman
+    
+    Cabinet o-- StorableItem
+    Cafeteria o-- Meal
+    
+    Book *-- BookType
+    Book *-- LawRecord
+    AncientLawBook o-- Cabinet
+    
+    Clothing *-- ClothingStyle
+    
+    ArrestInfo o-- Korotyshka
+    ArrestInfo *-- InjuryDetails
+    IllegalArrestException o-- ArrestInfo
+    ConflictEscalationException o-- Conflict
+    RoomLockedException o-- Room
+    ConscienceTormentException o-- Conscience
+    InjuryDetails *-- InjuryType
